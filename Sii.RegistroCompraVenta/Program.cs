@@ -17,7 +17,8 @@ builder
     {
         IConfiguration config = serviceProvider.GetRequiredService<IConfiguration>();
         return DigitalCertLoader.LoadCertificateAsync(config).GetAwaiter().GetResult();
-    });
+    })
+    .SetHandlerLifetime(System.Threading.Timeout.InfiniteTimeSpan);
 
 builder.Services.AddControllers();
 
